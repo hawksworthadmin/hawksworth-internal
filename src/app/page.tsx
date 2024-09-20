@@ -1,9 +1,19 @@
+import Container from '@/components/layout/Container'
+import DefaultHeader from '@/components/layout/DefaultHeader'
 import React from 'react'
+import HomeHero from './(home-page)/HomeHero'
+import HomeAbout from './(home-page)/HomeAbout'
+import HomePeople from './(home-page)/HomePeople'
 
 export default function page() {
   return (
-    <div className='p-10 bg-white text-4xl font-bold'>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem iure ipsam dicta nam vero incidunt officia accusamus doloribus alias magnam error sequi, esse corrupti voluptatum laborum earum quisquam cum quas.
-    </div>
+    <Container>
+      <div className='flex flex-col gap-default'>
+        <DefaultHeader />
+        <HomeHero />
+      </div>
+      <HomeAbout />
+      <HomePeople />
+    </Container>
   )
 }

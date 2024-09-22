@@ -3,9 +3,15 @@ import DefaultHeader from '@/components/layout/DefaultHeader'
 import React from 'react'
 import HomeHero from './(home-page)/HomeHero'
 import HomeAbout from './(home-page)/HomeAbout'
-import HomePeople from './(home-page)/HomePeople'
+import HomeRoles from './(home-page)/HomeRoles'
+import { getRecentTeams } from '@/lib/prismic/teams.prismic'
+import HomeEvents from './(home-page)/HomeEvents'
+import HomeResources from './(home-page)/HomeResources'
 
-export default function page() {
+export default async function page() {
+
+  const roles = await getRecentTeams();
+
   return (
     <Container>
       <div className='flex flex-col gap-default'>
@@ -13,7 +19,9 @@ export default function page() {
         <HomeHero />
       </div>
       <HomeAbout />
-      <HomePeople />
+      <HomeRoles roles={roles} />
+      <HomeEvents />
+      <HomeResources />
     </Container>
   )
 }

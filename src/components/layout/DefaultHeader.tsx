@@ -9,7 +9,7 @@ type Props = {}
 export default function DefaultHeader({ }: Props) {
     const pathname = usePathname();
 
-    const links: { label: string; route: string; } = [
+    const links: { label: string; route: string; }[] = [
         {
             label: 'Home',
             route: '/',

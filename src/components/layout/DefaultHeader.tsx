@@ -44,7 +44,7 @@ const navList: EachNav[] = [
 export default function DefaultHeader() {
     return (
         <>
-            <header className="theme-main-menu menu-overlay menu-style-one white-vr sticky-menu">
+            <header id='site-header' className="theme-main-menu menu-overlay menu-style-one white-vr sticky-menu">
                 <div className="inner-content position-relative">
                     <div className="top-header">
                         <div className="d-flex align-items-center justify-content-between">

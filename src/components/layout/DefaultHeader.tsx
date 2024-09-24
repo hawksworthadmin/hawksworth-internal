@@ -13,9 +13,10 @@ const navList: EachNav[] = [
         route: '/internal/website/resources'
     },
     {
-        label: "Jobs",
-        route: '/internal/website/jobs'
+        label: "Openings",
+        route: '/internal/website/openings'
     },
+    
     {
         label: "Events",
         route: '/internal/website/events'
@@ -33,7 +34,11 @@ const navList: EachNav[] = [
                 route: '/internal/website/people/senior-analysts'
             },
         ]
-    }
+    },
+    {
+        label: "About",
+        route: '/internal/website/about'
+    },
 ]
 
 export default function DefaultHeader() {

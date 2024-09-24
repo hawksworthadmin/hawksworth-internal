@@ -1,16 +1,19 @@
 import React from 'react'
-import { getRecentTeams } from '@/lib/prismic/teams.prismic'
-import HomeHero from './(home-page)/HomeHero'
-import HomeAbout from './(home-page)/HomeAbout'
+import LoginPage from './LognPage'
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation';
 
-export default async function page() {
+export default function page() {
+  const cookie = cookies();
+  const hwToken = cookie.get('hw-token');
+
+  if(hwToken){
+    redirect('/internal/website')
+  }
 
   return (
     <>
-      <HomeHero />
-      <HomeAbout />
-      <h1>How va na</h1>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium soluta assumenda illo tempore cum nemo, natus quasi laudantium harum labore voluptatum itaque dolore odio omnis ad quibusdam molestiae ipsam tenetur.</p>
+      <LoginPage />
     </>
   )
 }

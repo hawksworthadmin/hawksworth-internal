@@ -1,10 +1,11 @@
+import Link from 'next/link'
 import React from 'react'
 import { BsArrowRight } from 'react-icons/bs'
 
 export default function HomeHero() {
     return (
         <>
-            <section className='hero-banner-one pt-225 xl-pt-200 lg-pt-150 pb-150 lg-pb-100 position-relative' style={{ height: '100vh' }}>
+            <section className='hero-banner-one pt-225 xl-pt-200 lg-pt-150 pb-150 lg-pb-100 position-relative' >
                 <div className='hero-slider-one m0 slick-initialized slick-slider'>
                     <div className='slick-list draggable'>
                         <div className='slick-track' style={{ backgroundImage: `url(https://static.vecteezy.com/system/resources/previews/027/105/424/large_2x/blue-wall-in-home-office-for-mockup-or-copy-space-free-photo.jpg)`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
@@ -24,7 +25,7 @@ export default function HomeHero() {
                         </div>
                     </div>
                 </div>
-                <a className='more-btn rounded-circle d-flex align-items-center justify-content-center tran3s wow fadeInLeft' style={{ visibility: "visible", animationName: "fadeInLeft" }}></a>
+                <Link href={'/internal/website/about'} className='more-btn rounded-circle d-flex align-items-center justify-content-center tran3s wow fadeInLeft' style={{ visibility: "visible", animationName: "fadeInLeft" }}></Link>
             </section >
         </>
     )

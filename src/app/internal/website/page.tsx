@@ -4,6 +4,7 @@ import HomeAbout from './(home-page)/HomeAbout'
 import HomeResources from './(home-page)/HomeResources'
 import HRCTA from '@/components/HRCTA'
 import HomeFAQ from './(home-page)/HomeFAQ'
+import HomeArticles from './(home-page)/HomeArticles'
 
 export default function page() {
     return (
@@ -12,6 +13,7 @@ export default function page() {
             <HomeAbout />
             <HomeResources />
             <HomeFAQ />
+            <HomeArticles />
             <HRCTA />
         </>
     )

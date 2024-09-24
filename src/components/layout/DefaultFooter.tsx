@@ -3,7 +3,7 @@ import React from 'react'
 export default function DefaultFooter() {
     return (
         <>
-            <div className="footer-two">
+            <div className="footer-two" style={{ backgroundImage: `ulr(https://static.vecteezy.com/system/resources/previews/003/462/322/non_2x/abstract-dark-navy-blue-hexagon-pattern-background-in-3d-style-vector.jpg)`}}>
                 <div className="container">
                     <div className="bg-wrapper position-relative">
                         <div className="container">
@@ -11,7 +11,7 @@ export default function DefaultFooter() {
                                 <div className="col-xl-3 col-lg-4 footer-intro mb-30">
                                     <div className="logo mb-35 md-mb-20">
                                         <a href="index.html">
-                                            <img src="images/logo/logo_02.svg" alt="" />
+                                            <img src="/logo-dark.png" alt="" />
                                         </a>
                                     </div>
                                     <p className="lh-sm mb-40 md-mb-20">2190 Urban Terrace, Mirpur,  link Licensed in 50 states.</p>

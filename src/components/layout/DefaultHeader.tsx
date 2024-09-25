@@ -69,9 +69,9 @@ export default function DefaultHeader() {
                                         {
                                             navList.map((eachNav, index) => {
                                                 return <li className="nav-item dropdown" key={`nav--${index}`}>
-                                                    <Link className="nav-link dropdown-toggle" href={eachNav.subNav ? "" : eachNav.route} role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                                    <a className="nav-link dropdown-toggle" href={eachNav.subNav ? "" : eachNav.route} role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                                                         {eachNav.label}
-                                                    </Link>
+                                                    </a>
                                                     {
                                                         eachNav?.subNav && eachNav?.subNav.length > 0 ? <ul className="dropdown-menu">
                                                             {eachNav.subNav.map((eachSubNav, index) => {

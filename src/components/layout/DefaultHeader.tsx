@@ -49,9 +49,9 @@ export default function DefaultHeader() {
                     <div className="top-header">
                         <div className="d-flex align-items-center justify-content-between">
                             <div className="logo order-lg-0">
-                                <a href="index.html" className="d-flex align-items-center" style={{ width: '200px', height: '50px' }}>
+                                <Link href="/internal/website" className="d-flex align-items-center" style={{ width: '200px', height: '50px' }}>
                                     <img src="/logo-light.svg" alt="" />
-                                </a>
+                                </Link>
                             </div>
                             <div className="right-widget ms-auto ms-lg-0 me-3 me-lg-0 order-lg-3">
                                 <ul className="d-flex align-items-center style-none">

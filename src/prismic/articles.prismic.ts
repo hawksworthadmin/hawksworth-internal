@@ -8,7 +8,16 @@ export async function getArticles(): Promise<ArticlesDocument<string>[]>{
             cache: 'no-store',
             next: { tags: ['prismic', 'latest_articles'] },
         },
+        fetchLinks: ['author.fullname'],
         limit: 3,
+        graphQuery: `{
+            articles{
+                title
+                short_description
+                author
+                image
+            }
+        }`,
         orderings: [
             {
                 field: 'my.articles.published_on',

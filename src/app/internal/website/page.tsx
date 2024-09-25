@@ -5,15 +5,18 @@ import HomeResources from './(home-page)/HomeResources'
 import HRCTA from '@/components/HRCTA'
 import HomeFAQ from './(home-page)/HomeFAQ'
 import HomeArticles from './(home-page)/HomeArticles'
+import { getArticles } from '@/prismic/articles.prismic'
 
-export default function page() {
+export default async function page() {
+    const articles = await getArticles();
+    
     return (
         <>
             <HomeHero />
             <HomeAbout />
             <HomeResources />
             <HomeFAQ />
-            <HomeArticles />
+            <HomeArticles articles={articles} />
             <HRCTA />
         </>
     )

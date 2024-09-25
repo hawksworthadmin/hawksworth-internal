@@ -1,10 +1,13 @@
 import EachArticle from '@/components/EachArticle'
 import Link from 'next/link'
 import React from 'react'
+import { ArticlesDocument } from '../../../../../prismicio-types'
 
-type Props = {}
+type Props = {
+    articles: ArticlesDocument<string>[]
+}
 
-export default function HomeArticles({ }: Props) {
+export default function HomeArticles({ articles }: Props) {
     return (
         <>
             <section className='blog-section-one position-relative mt-150 mb-150 lg-mb-80 lg-mt-80 pb-120 pt-120 lg-pb-80 lg-pt-80'>
@@ -18,8 +21,14 @@ export default function HomeArticles({ }: Props) {
 
 
                         <div className='row gx-xxl-5'>
-                            <EachArticle />
-                            <EachArticle />
+                            {
+                                articles.map((article, index) => {
+                                    return <EachArticle
+                                        key={`article-${index}`}
+                                        report={article}
+                                    />
+                                })
+                            }
                         </div>
 
 

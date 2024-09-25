@@ -1,6 +1,6 @@
 {
   "format": "page",
-  "id": "teams",
+  "id": "roles",
   "label": "Roles",
   "repeatable": true,
   "status": true,
@@ -16,7 +16,7 @@
         "type": "Text",
         "config": {
           "label": "Name",
-          "placeholder": "Enter team name"
+          "placeholder": ""
         }
       },
       "slices": {

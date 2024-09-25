@@ -4,6 +4,137 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type ArticlesDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Articles documents
+ */
+interface ArticlesDocumentData {
+  /**
+   * Content field in *Articles*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articles.content
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+
+  /**
+   * title field in *Articles*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articles.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Short Description  field in *Articles*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articles.short_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  short_description: prismic.KeyTextField;
+
+  /**
+   * Image field in *Articles*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articles.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Category field in *Articles*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articles.category
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  category: prismic.ContentRelationshipField<"categories">;
+
+  /**
+   * Author field in *Articles*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articles.author
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  author: prismic.ContentRelationshipField<"people">;
+
+  /**
+   * Slice Zone field in *Articles*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articles.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ArticlesDocumentDataSlicesSlice> /**
+   * Meta Title field in *Articles*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: articles.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Articles*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: articles.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Articles*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articles.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Articles document from Prismic
+ *
+ * - **API ID**: `articles`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ArticlesDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ArticlesDocumentData>,
+    "articles",
+    Lang
+  >;
+
 type CategoriesDocumentDataSlicesSlice = never;
 
 /**
@@ -222,7 +353,7 @@ interface PeopleDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  role: prismic.ContentRelationshipField<"teams">;
+  role: prismic.ContentRelationshipField<"roles">;
 
   /**
    * Slice Zone field in *People*
@@ -388,18 +519,18 @@ export type ResourcesDocument<Lang extends string = string> =
     Lang
   >;
 
-type TeamsDocumentDataSlicesSlice = never;
+type RolesDocumentDataSlicesSlice = never;
 
 /**
  * Content for Roles documents
  */
-interface TeamsDocumentData {
+interface RolesDocumentData {
   /**
    * Name field in *Roles*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: Enter team name
-   * - **API ID Path**: teams.name
+   * - **Placeholder**: *None*
+   * - **API ID Path**: roles.name
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
@@ -410,16 +541,16 @@ interface TeamsDocumentData {
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
-   * - **API ID Path**: teams.slices[]
+   * - **API ID Path**: roles.slices[]
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<TeamsDocumentDataSlicesSlice> /**
+  slices: prismic.SliceZone<RolesDocumentDataSlicesSlice> /**
    * Meta Title field in *Roles*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: teams.meta_title
+   * - **API ID Path**: roles.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */;
@@ -430,7 +561,7 @@ interface TeamsDocumentData {
    *
    * - **Field Type**: Text
    * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: teams.meta_description
+   * - **API ID Path**: roles.meta_description
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
@@ -441,7 +572,7 @@ interface TeamsDocumentData {
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: teams.meta_image
+   * - **API ID Path**: roles.meta_image
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#image
    */
@@ -451,21 +582,22 @@ interface TeamsDocumentData {
 /**
  * Roles document from Prismic
  *
- * - **API ID**: `teams`
+ * - **API ID**: `roles`
  * - **Repeatable**: `true`
  * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type TeamsDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<Simplify<TeamsDocumentData>, "teams", Lang>;
+export type RolesDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<RolesDocumentData>, "roles", Lang>;
 
 export type AllDocumentTypes =
+  | ArticlesDocument
   | CategoriesDocument
   | EventsDocument
   | PeopleDocument
   | ResourcesDocument
-  | TeamsDocument;
+  | RolesDocument;
 
 declare module "@prismicio/client" {
   interface CreateClient {
@@ -477,6 +609,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      ArticlesDocument,
+      ArticlesDocumentData,
+      ArticlesDocumentDataSlicesSlice,
       CategoriesDocument,
       CategoriesDocumentData,
       CategoriesDocumentDataSlicesSlice,
@@ -489,9 +624,9 @@ declare module "@prismicio/client" {
       ResourcesDocument,
       ResourcesDocumentData,
       ResourcesDocumentDataSlicesSlice,
-      TeamsDocument,
-      TeamsDocumentData,
-      TeamsDocumentDataSlicesSlice,
+      RolesDocument,
+      RolesDocumentData,
+      RolesDocumentDataSlicesSlice,
       AllDocumentTypes,
     };
   }

@@ -6,7 +6,7 @@ type EachNav = { label: string; route: string; subNav?: EachNav[] }
 const navList: EachNav[] = [
     {
         label: "Home",
-        route: '/internal/website'
+        route: '/'
     },
     {
         label: "Resources",

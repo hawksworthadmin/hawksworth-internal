@@ -1,0 +1,7 @@
+:root {
+    --secondary-color: #C49700;
+}
+
+.text-secondary {
+    color: var(--secondary-color) !important;
+}

@@ -461,6 +461,17 @@ interface ResourcesDocumentData {
   category: prismic.ContentRelationshipField<"categories">;
 
   /**
+   * Content field in *Resources*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: resources.content
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+
+  /**
    * Slice Zone field in *Resources*
    *
    * - **Field Type**: Slice Zone

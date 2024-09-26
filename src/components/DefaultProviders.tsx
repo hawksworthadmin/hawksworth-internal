@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect } from 'react'
 import { Next13ProgressBar } from 'next13-progressbar';
+import { AppProvider } from '@/context/app.context';
 
 type Props = {
     children: any;
@@ -24,8 +25,10 @@ export default function DefaultProviders({ children }: Props) {
 
     return (
         <>
-            <Next13ProgressBar height="4px" color="#C49700" options={{ showSpinner: true }} showOnShallow />
-            {children}
+            <AppProvider>
+                <Next13ProgressBar height="4px" color="#C49700" options={{ showSpinner: true }} showOnShallow />
+                {children}
+            </AppProvider>
         </>
     )
 }

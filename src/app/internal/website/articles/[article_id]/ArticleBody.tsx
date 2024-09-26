@@ -1,10 +1,10 @@
 'use client'
-import { PrismicRichText, PrismicText } from '@prismicio/react'
+import { PrismicRichText } from '@prismicio/react'
 import React, { useEffect, useState } from 'react'
 import { ArticlesDocument } from '../../../../../../prismicio-types'
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '@/firebase'
-import { RichTextField, RTEmbedNode, RTImageNode } from '@prismicio/client'
+import { RichTextField } from '@prismicio/client'
 
 type Props = {
     details: ArticlesDocument<string>
@@ -31,18 +31,6 @@ export default function ArticleBody({ details }: Props) {
         })
     }
 
-
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                console.log("Current user:", user);
-                setFirstName(user?.displayName?.split(' ')[0] || null)
-                setLastName(user?.displayName?.split(' ')[1] || null)
-            } else {
-                console.log("No user signed in");
-            }
-        });
-    }, [])
 
     useEffect(() => {
         if (details?.data?.content && first_name && last_name) {

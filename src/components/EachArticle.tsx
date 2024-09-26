@@ -9,7 +9,6 @@ type Props = {
 }
 
 export default function EachArticle({ report }: Props) {
-    console.log(report)
     let link = `/internal/website/articles/${report.uid}`
     return (
         <>

@@ -1,47 +1,46 @@
+'use client'
+import { useAppContext } from '@/context/app.context';
 import Link from 'next/link'
 import React from 'react'
 
 type EachNav = { label: string; route: string; subNav?: EachNav[] }
 
-const navList: EachNav[] = [
-    {
-        label: "Home",
-        route: '/'
-    },
-    {
-        label: "Resources",
-        route: '/internal/website/resources'
-    },
-    {
-        label: "Openings",
-        route: '/internal/website/openings'
-    },
-    
-    {
-        label: "Events",
-        route: '/internal/website/events'
-    },
-    {
-        label: "People",
-        route: '/internal/website/people',
-        subNav: [
-            {
-                label: "Managing Partners",
-                route: '/internal/website/people/managing-partners'
-            },
-            {
-                label: "Senior Analysts",
-                route: '/internal/website/people/senior-analysts'
-            },
-        ]
-    },
-    {
-        label: "About",
-        route: '/internal/website/about'
-    },
-]
+
 
 export default function DefaultHeader() {
+    const { roles } = useAppContext();
+    const navList: EachNav[] = [
+        {
+            label: "Home",
+            route: '/'
+        },
+        {
+            label: "Resources",
+            route: '/internal/website/resources'
+        },
+        {
+            label: "Openings",
+            route: '/internal/website/openings'
+        },
+
+        {
+            label: "Events",
+            route: '/internal/website/events'
+        },
+        {
+            label: "People",
+            route: '/internal/website/people',
+            //@ts-ignore
+            subNav: roles.map((eachRole) => ({
+                label: eachRole.data.name,
+                route: eachRole.uid,
+            }))
+        },
+        {
+            label: "About",
+            route: '/internal/website/about'
+        },
+    ]
     return (
         <>
             <header id='site-header' className="theme-main-menu menu-overlay menu-style-one white-vr sticky-menu">

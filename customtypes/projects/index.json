@@ -67,6 +67,23 @@
           "thumbnails": []
         }
       },
+      "participants": {
+        "type": "Group",
+        "config": {
+          "label": "Participants",
+          "repeat": true,
+          "fields": {
+            "team_member": {
+              "type": "Link",
+              "config": {
+                "label": "Team member",
+                "select": "document",
+                "customtypes": ["people"]
+              }
+            }
+          }
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

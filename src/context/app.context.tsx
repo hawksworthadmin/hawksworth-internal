@@ -3,6 +3,7 @@ import { RolesDocument } from '../../prismicio-types';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '@/firebase';
 import WebsiteLoading from '@/app/internal/website/(components)/WebsiteLoading';
+import { getAllRoles } from '@/prismic/roles.prismic';
 
 interface AppContextType {
     user: User | null;
@@ -28,15 +29,22 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     };
 
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                console.log("Current user:", user);
-                setAppState({ user, loading: false });
+        (async () => {
+            try {
+                const roles = await getAllRoles();
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        console.log("Current user:", user);
+                        setAppState({ user, roles, loading: false });
+
+                    } else {
+                        console.log("No user signed in");
+                    }
+                });
+            } catch (error) {
                 
-            } else {
-                console.log("No user signed in");
             }
-        });
+        })();
     },[])
 
     return (

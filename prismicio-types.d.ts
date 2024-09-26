@@ -323,6 +323,17 @@ type PeopleDocumentDataSlicesSlice = never;
  */
 interface PeopleDocumentData {
   /**
+   * Role field in *People*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: people.role
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  role: prismic.ContentRelationshipField<"roles">;
+
+  /**
    * Full Name field in *People*
    *
    * - **Field Type**: Text
@@ -345,15 +356,15 @@ interface PeopleDocumentData {
   biography: prismic.RichTextField;
 
   /**
-   * Role field in *People*
+   * Image field in *People*
    *
-   * - **Field Type**: Content Relationship
+   * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: people.role
+   * - **API ID Path**: people.image
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
-  role: prismic.ContentRelationshipField<"roles">;
+  image: prismic.ImageField<never>;
 
   /**
    * Slice Zone field in *People*
@@ -423,6 +434,21 @@ export interface ProjectsDocumentDataServicesItem {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   service: prismic.ContentRelationshipField<"services">;
+}
+
+/**
+ * Item in *Projects → Participants*
+ */
+export interface ProjectsDocumentDataParticipantsItem {
+  /**
+   * Team member field in *Projects → Participants*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects.participants[].team_member
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  team_member: prismic.ContentRelationshipField<"people">;
 }
 
 type ProjectsDocumentDataSlicesSlice = never;
@@ -496,6 +522,19 @@ interface ProjectsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * Participants field in *Projects*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects.participants[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  participants: prismic.GroupField<
+    Simplify<ProjectsDocumentDataParticipantsItem>
+  >;
 
   /**
    * Slice Zone field in *Projects*
@@ -859,6 +898,7 @@ declare module "@prismicio/client" {
       ProjectsDocument,
       ProjectsDocumentData,
       ProjectsDocumentDataServicesItem,
+      ProjectsDocumentDataParticipantsItem,
       ProjectsDocumentDataSlicesSlice,
       ResourcesDocument,
       ResourcesDocumentData,

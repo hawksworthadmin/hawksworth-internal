@@ -2,8 +2,6 @@
 import { PrismicRichText } from '@prismicio/react'
 import React, { useEffect, useState } from 'react'
 import { ArticlesDocument } from '../../../../../../prismicio-types'
-import { onAuthStateChanged } from 'firebase/auth'
-import { auth } from '@/firebase'
 import { RichTextField } from '@prismicio/client'
 import { useAppContext } from '@/context/app.context'
 
@@ -35,10 +33,9 @@ export default function ArticleBody({ details }: Props) {
     useEffect(() => {
         if (details?.data?.content && user && user.displayName) {
             const updatedContent = replacePlaceholdersInContent(details.data.content, user.displayName?.split(' ')[0], user.displayName?.split(' ')[1]);
-            console.log('THE CONTENT:::', updatedContent)
             setPersonalizedContent(updatedContent as any);
         }
-        
+
     }, [user, details])
     
     return (

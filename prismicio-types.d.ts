@@ -367,6 +367,17 @@ interface PeopleDocumentData {
   image: prismic.ImageField<never>;
 
   /**
+   * Phone Number field in *People*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Ex +234 533 3534
+   * - **API ID Path**: people.phone_number
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  phone_number: prismic.KeyTextField;
+
+  /**
    * Slice Zone field in *People*
    *
    * - **Field Type**: Slice Zone

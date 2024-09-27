@@ -10,10 +10,10 @@ type EachNav = { label: string; route: string; subNav?: EachNav[] }
 export default function DefaultHeader() {
     const { roles } = useAppContext();
     const navList: EachNav[] = [
-        {
-            label: "Home",
-            route: '/'
-        },
+        // {
+        //     label: "Home",
+        //     route: '/'
+        // },
         {
             label: "Resources",
             route: '/internal/website/resources'
@@ -33,7 +33,7 @@ export default function DefaultHeader() {
             //@ts-ignore
             subNav: roles.map((eachRole) => ({
                 label: eachRole.data.name,
-                route: eachRole.uid,
+                route: `/internal/website/people?role=${eachRole.uid}`,
             }))
         },
         {
@@ -64,7 +64,11 @@ export default function DefaultHeader() {
                                 <div className="collapse navbar-collapse" id="navbarNav">
                                     <ul className="navbar-nav align-items-lg-center">
                                         <li className="d-block d-lg-none"><div className="logo"><a href="index.html" className="d-block"><img src="/logo-light.svg" alt="" /></a></div></li>
-
+                                        <li className="nav-item dropdown">
+                                            <Link className="nav-link dropdown-toggle" href={`/internal/website`} role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                                Home
+                                            </Link>
+                                        </li>
                                         {
                                             navList.map((eachNav, index) => {
                                                 return <li className="nav-item dropdown" key={`nav--${index}`}>

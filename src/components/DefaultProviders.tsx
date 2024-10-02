@@ -12,10 +12,12 @@ export default function DefaultProviders({ children }: Props) {
     useEffect(() => {
         const handleScroll = () => {
             const siteHeader = document.getElementById('site-header');
-            if (window.scrollY > 0 && siteHeader) {
-                siteHeader.classList.add('fixed');
-            } else if (siteHeader) {
-                siteHeader.classList.remove('fixed');
+            if(siteHeader){
+                if (window.scrollY > 0 && siteHeader) {
+                    siteHeader?.classList?.add('fixed');
+                } else if (siteHeader) {
+                    siteHeader?.classList?.remove('fixed');
+                }
             }
         };
 

@@ -8,7 +8,7 @@ type EachNav = { label: string; route: string; subNav?: EachNav[] }
 
 
 export default function DefaultHeader() {
-    const { roles } = useAppContext();
+    const { offices } = useAppContext();
     const navList: EachNav[] = [
         // {
         //     label: "Home",
@@ -31,9 +31,9 @@ export default function DefaultHeader() {
             label: "People",
             route: '/internal/website/people',
             //@ts-ignore
-            subNav: roles.map((eachRole) => ({
-                label: eachRole.data.name,
-                route: `/internal/website/people?role=${eachRole.uid}`,
+            subNav: offices.map((eachOffice) => ({
+                label: eachOffice.data.name,
+                route: `/internal/website/people?office=${eachOffice.uid}`,
             }))
         },
         {
@@ -49,7 +49,7 @@ export default function DefaultHeader() {
                         <div className="d-flex align-items-center justify-content-between">
                             <div className="logo order-lg-0">
                                 <Link href="/internal/website" className="d-flex align-items-center" style={{ width: '200px', height: '50px' }}>
-                                    <img src="/logo-light.svg" alt="" />
+                                    <img src="/logo-light.svg" alt="brand logo" />
                                 </Link>
                             </div>
                             <div className="right-widget ms-auto ms-lg-0 me-3 me-lg-0 order-lg-3">
@@ -63,7 +63,7 @@ export default function DefaultHeader() {
                                 </button>
                                 <div className="collapse navbar-collapse" id="navbarNav">
                                     <ul className="navbar-nav align-items-lg-center">
-                                        <li className="d-block d-lg-none"><div className="logo"><a href="index.html" className="d-block"><img src="/logo-light.svg" alt="" /></a></div></li>
+                                        <li className="d-block d-lg-none"><div className="logo"><a href="index.html" className="d-block"><img src="/logo-light.svg" alt="logo" width={230} /></a></div></li>
                                         <li className="nav-item dropdown">
                                             <Link className="nav-link dropdown-toggle" href={`/internal/website`} role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                                                 Home
@@ -72,9 +72,9 @@ export default function DefaultHeader() {
                                         {
                                             navList.map((eachNav, index) => {
                                                 return <li className="nav-item dropdown" key={`nav--${index}`}>
-                                                    <a className="nav-link dropdown-toggle" href={eachNav.subNav ? "" : eachNav.route} role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                                    <Link className="nav-link dropdown-toggle" href={eachNav.subNav ? "" : eachNav.route} role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                                                         {eachNav.label}
-                                                    </a>
+                                                    </Link>
                                                     {
                                                         eachNav?.subNav && eachNav?.subNav.length > 0 ? <ul className="dropdown-menu">
                                                             {eachNav.subNav.map((eachSubNav, index) => {

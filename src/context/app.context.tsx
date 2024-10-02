@@ -1,13 +1,13 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
-import { RolesDocument } from '../../prismicio-types';
+import { OfficesDocument } from '../../prismicio-types';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '@/firebase';
 import WebsiteLoading from '@/app/internal/website/(components)/WebsiteLoading';
-import { getAllRoles } from '@/prismic/roles.prismic';
+import { getAllOffices } from '@/prismic/office.prismic';
 
 interface AppContextType {
     user: User | null;
-    roles: RolesDocument[];
+    offices: OfficesDocument[];
     loading: boolean;
     setAppState: (newState: Partial<AppContextType>) => void;
 }
@@ -17,7 +17,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider = ({ children }: { children: ReactNode }) => {
     const [state, setState] = useState<Omit<AppContextType, 'setAppState'>>({
         user: null,
-        roles: [],
+        offices: [],
         loading: true,
     });
 
@@ -31,18 +31,19 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
         (async () => {
             try {
-                const roles = await getAllRoles();
+                const offices = await getAllOffices();
                 onAuthStateChanged(auth, (user) => {
                     if (user) {
                         console.log("Current user:", user);
-                        setAppState({ user, roles, loading: false });
+                        setAppState({ user, offices, loading: false });
 
                     } else {
                         console.log("No user signed in");
+                        setAppState({ loading: false })
                     }
                 });
             } catch (error) {
-                
+                console.log('OFFICE ROLE:::', error);
             }
         })();
     },[])

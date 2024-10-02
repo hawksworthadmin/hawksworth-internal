@@ -40,7 +40,7 @@ export default function LoginPage() {
         <>
             <div className='container'>
                 <div className="row align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
-                    <div className="col-lg-4 col-12">
+                    <div className="col-lg-4 col-9">
                         <button className="btn-four w-100 tran3s d-block mt-20" onClick={signInWithGoogle}>
                             Login With Hawksworth
                         </button>

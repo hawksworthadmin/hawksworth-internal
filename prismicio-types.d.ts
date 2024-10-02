@@ -316,6 +316,82 @@ interface EventsDocumentData {
 export type EventsDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<EventsDocumentData>, "events", Lang>;
 
+type OfficesDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Offices documents
+ */
+interface OfficesDocumentData {
+  /**
+   * Name field in *Offices*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Enter office name
+   * - **API ID Path**: offices.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Offices*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: offices.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<OfficesDocumentDataSlicesSlice> /**
+   * Meta Title field in *Offices*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: offices.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Offices*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: offices.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Offices*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: offices.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Offices document from Prismic
+ *
+ * - **API ID**: `offices`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type OfficesDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<OfficesDocumentData>,
+    "offices",
+    Lang
+  >;
+
 type PeopleDocumentDataSlicesSlice = never;
 
 /**
@@ -744,6 +820,17 @@ interface RolesDocumentData {
   name: prismic.KeyTextField;
 
   /**
+   * Office field in *Roles*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: roles.office
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  office: prismic.ContentRelationshipField<"offices">;
+
+  /**
    * Slice Zone field in *Roles*
    *
    * - **Field Type**: Slice Zone
@@ -878,6 +965,7 @@ export type AllDocumentTypes =
   | ArticlesDocument
   | CategoriesDocument
   | EventsDocument
+  | OfficesDocument
   | PeopleDocument
   | ProjectsDocument
   | ResourcesDocument
@@ -903,6 +991,9 @@ declare module "@prismicio/client" {
       EventsDocument,
       EventsDocumentData,
       EventsDocumentDataSlicesSlice,
+      OfficesDocument,
+      OfficesDocumentData,
+      OfficesDocumentDataSlicesSlice,
       PeopleDocument,
       PeopleDocumentData,
       PeopleDocumentDataSlicesSlice,

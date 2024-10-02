@@ -1,7 +1,11 @@
+import { RolesDocument } from "../../prismicio-types";
 import { prismicClient } from "./index.prismic";
+import * as prismic from '@prismicio/client';
 
-export async function getAllRoles(){
-    const latestBlogPosts = await prismicClient.getAllByType('roles', {
+export const getRolesByOffice = async (officeUid: string[]): Promise<RolesDocument[]> => {
+    const latestRoles = await prismicClient.getAllByType('roles', {
+        // filters: [prismic.filter.at('my.roles.office', officeUid)],
+        fetchLinks: ['office.name'],
         fetchOptions: {
             cache: 'no-store',
             next: { tags: ['prismic', 'roles'] },
@@ -13,6 +17,7 @@ export async function getAllRoles(){
                 direction: 'desc',
             },
         ],
-    });
-    return latestBlogPosts;
+    })
+
+    return latestRoles
 }

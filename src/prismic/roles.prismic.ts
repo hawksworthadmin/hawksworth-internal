@@ -5,7 +5,7 @@ import * as prismic from '@prismicio/client';
 export const getRolesByOffice = async (office_id: string): Promise<prismic.Query<RolesDocument<string>>> => {
     let theOffice = await prismicClient.getByUID('offices', office_id);
 
-    let recentOffice = await prismicClient.getByType('roles', {
+    let officeRoles = await prismicClient.getByType('roles', {
         filters: [
             prismic.filter.at('my.roles.office', theOffice.id),
         ],
@@ -17,5 +17,9 @@ export const getRolesByOffice = async (office_id: string): Promise<prismic.Query
         pageSize: 20,
     });
 
-    return recentOffice
+    return {
+        //@ts-ignore
+        officeRoles,
+        office: theOffice
+    } as any
 }

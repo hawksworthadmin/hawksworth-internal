@@ -1,11 +1,13 @@
 'use client'
 import { useAppContext } from '@/context/app.context'
 import Link from 'next/link'
-import React from 'react'
-import { BsArrowRight } from 'react-icons/bs'
+import React, { useEffect, useState } from 'react'
+
 
 export default function HomeHero() {
     const { user } = useAppContext();
+    const [time, settime] = useState('');
+
     const getGreeting = () => {
         const hour = new Date().getHours();
         if (hour < 12) {
@@ -16,6 +18,27 @@ export default function HomeHero() {
             return 'Good Evening';
         }
     };
+
+
+    // const subHeadings = [
+    //     `Top of the ${time} to you! Have a beautiful ${time}`,
+    //     `Go for it! You already ave what it takes.`,
+    //     `Remember that help is available. To those who ask, Ask away!`,
+    //     `Breathe in, breathe out. It's another day. It too shall pass.`,
+    //     `Share some love today. Spread that your beautiful smile.`,
+    //     `Celebrate peace! Remember to to drink water too.`,
+    //     `Did you remember to give your system some`
+    // ]
+
+    // const randomSubHeading = () => {
+    //     return Math.floor(Math.random() * subHeadings.length);
+    // }
+
+    // useEffect(() => {
+
+    // },[])
+
+
     return (
         <>
             <section className='hero-banner-one pt-225 xl-pt-200 lg-pt-150 pb-150 lg-pb-100 position-relative d-flex align-items-center' style={{ minHeight: '100vh'}}>
@@ -36,7 +59,6 @@ export default function HomeHero() {
                             <p className="text-xl text-white pt-35 pb-25 wow fadeInUp" data-wow-delay="0.1s" style={{ visibility: "visible", animationDelay: "0.1s", animationName: "fadeInUp" }}>Empowering businesses with innovative strategies and actionable recommendations</p>
                             <a href="contact.html" className="btn-two icon-link wow fadeInUp" data-wow-delay="0.2s" style={{ visibility: "visible", animationDelay: "0.2s", animationName: "fadeInUp" }}>
                                 <span>Let’s Talk</span>
-                                <BsArrowRight className="lazy-img icon ms-2" size={25} />
                             </a>
                         </div>
                     </div>

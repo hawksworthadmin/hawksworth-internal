@@ -2,22 +2,20 @@ import { RolesDocument } from "../../prismicio-types";
 import { prismicClient } from "./index.prismic";
 import * as prismic from '@prismicio/client';
 
-export const getRolesByOffice = async (officeUid: string[]): Promise<RolesDocument[]> => {
-    const latestRoles = await prismicClient.getAllByType('roles', {
-        // filters: [prismic.filter.at('my.roles.office', officeUid)],
-        fetchLinks: ['office.name'],
-        fetchOptions: {
-            cache: 'no-store',
-            next: { tags: ['prismic', 'roles'] },
-        },
-        limit: 20,
-        orderings: [
-            {
-                field: 'my.roles.published_on',
-                direction: 'desc',
-            },
-        ],
-    })
+export const getRolesByOffice = async (office_id: string): Promise<prismic.Query<RolesDocument<string>>> => {
+    let theOffice = await prismicClient.getByUID('offices', office_id);
 
-    return latestRoles
+    let recentOffice = await prismicClient.getByType('roles', {
+        filters: [
+            prismic.filter.at('my.roles.office', theOffice.id),
+        ],
+        fetchLinks: ['office.name'],
+        orderings: {
+            field: 'document.first_publication_date',
+            direction: 'desc',
+        },
+        pageSize: 20,
+    });
+
+    return recentOffice
 }

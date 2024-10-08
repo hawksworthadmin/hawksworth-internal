@@ -1,34 +1,28 @@
 import { PeopleDocument } from "../../prismicio-types";
 import { prismicClient } from "./index.prismic";
+import * as prismic from '@prismicio/client';
 
 
-export async function getPeople(limit?: number): Promise<PeopleDocument<string>[]> {
-    const latestPeople = await prismicClient.getAllByType('people', {
-        fetchOptions: {
-            cache: 'no-store',
-            next: { tags: ['prismic', 'people'] },
-        },
-        fetchLinks: ['role.name'],
-        limit: limit || 4,
-        graphQuery: `{
-            people{
-                full_name
-                image
-                role
-            }
-        }`,
-        orderings: [
-            {
-                field: 'my.people.published_on',
-                direction: 'desc',
-            },
+export async function getPeopleByRole({ limit, role_id }: { role_id: string; limit: number }) {
+    let recentBlogPosts = await prismicClient.getByType('people', {
+        filters: [
+            prismic.filter.at('my.people.role', role_id),
         ],
-    })
+        fetchLinks: ['role.name'],
+        orderings: {
+            field: 'document.first_publication_date',
+            direction: 'desc',
+        },
+        pageSize: 6,
+    });
 
-    return latestPeople;
+    return recentBlogPosts
 }
 
+
 export async function getPersonByUID(uid: string): Promise<PeopleDocument<string>> {
-    const article = await prismicClient.getByUID('people', uid);
-    return article;
+    const person = await prismicClient.getByUID('people', uid, {
+        fetchLinks: ['roles.name', 'roles.uid']
+    });
+    return person;
 }

@@ -1,6 +1,11 @@
+import { getPersonByUID } from '@/prismic/people.prismic'
 import React from 'react'
 
-export default function page() {
+export default async function page(props: any) {
+    const person = await getPersonByUID(props.params.person_id);
+
+    console.log("THE RESULT:::", person)
+
     return (
         <>
             <div className="bg-primary text-white inner-banner-two light-bg text-center pt-200 md-pt-150 pb-85 lg-pb-50 position-relative">
@@ -26,16 +31,18 @@ export default function page() {
             </div>
 
 
-            <div className="team-details light-bg border-top pt-120 lg-pt-80 pb-150 lg-pb-80 shadow" style={{ background: '#fefee8'}}>
+            <div className="team-details light-bg border-top pt-120 lg-pt-80 pb-150 lg-pb-80 shadow" style={{ background: '#fefee8' }}>
                 <div className="container">
                     <div className="bg-wrapper">
                         <div className="row">
                             <div className="col-lg-4">
-                                <div className="member-img" style={{ backgroundImage: `url(/template/images/media/img_46.jpg)` }}></div>
+                                <div className="member-img" style={{ backgroundImage: `url(${person.data.image.url})` }}></div>
                             </div>
                             <div className="col-lg-4 col-md-6">
                                 <div className="pt-45 pb-45 ps-xl-4 ps-lg-0 ps-3 pe-xl-4 pe-lg-3 pe-3 border-right h-100">
-                                    <h2 className="name fw-bold">Mathews Firlo.</h2>
+                                    <h2 className="name fw-bold">
+                                        {person.data.full_name}
+                                    </h2>
                                     <div className="post">Founder &amp; CEO</div>
                                     <h6 className="fw-bold">About Firlo.</h6>
                                     <p>Before establishing Beratung in 2001, Mathew founded two Silicon Valley internet companies and later held management roles at Salomon in New York.</p>

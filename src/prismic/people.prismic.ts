@@ -21,8 +21,7 @@ export async function getPeopleByRole({ limit, role_id }: { role_id: string; lim
 
 
 export async function getPersonByUID(uid: string): Promise<PeopleDocument<string>> {
-    const person = await prismicClient.getByUID('people', uid, {
-        fetchLinks: ['roles.name', 'roles.uid']
-    });
+    let person = await prismicClient.getByUID('people', uid);
     return person;
 }
+

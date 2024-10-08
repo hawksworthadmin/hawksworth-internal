@@ -8,7 +8,7 @@ type Props = {
 }
 
 export default function EachPerson({ person }: Props) {
-    const link = `/internal/website/people/${person.id}`
+    const link = `/internal/website/people/${person.uid}`
     return (
         <>
             <div className="col-lg-3 col-sm-6 wow fadeInUp" style={{ visibility: `visible`, animationName: "fadeInUp" }}>

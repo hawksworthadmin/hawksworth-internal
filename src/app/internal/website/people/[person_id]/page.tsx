@@ -44,14 +44,12 @@ export default async function page(props: any) {
                                         {person.data.full_name}
                                     </h2>
                                     <div className="post">Founder &amp; CEO</div>
-                                    <h6 className="fw-bold">About Firlo.</h6>
-                                    <p>Before establishing Beratung in 2001, Mathew founded two Silicon Valley internet companies and later held management roles at Salomon in New York.</p>
+                                    <h6 className="fw-bold">About {person.data.full_name?.split(' ')[0]}.</h6>
+                                    {/* @ts-ignore */}
+                                    <p>The bio of the person goes here</p>
                                     <div className="social-share pt-35">
                                         <ul className="style-none d-flex align-items-center">
-                                            <li><a href="#"><i className="bi bi-facebook"></i></a></li>
-                                            <li><a href="#"><i className="bi bi-twitter"></i></a></li>
-                                            <li><a href="#"><i className="bi bi-dribbble"></i></a></li>
-                                            <li><a href="#"><i className="bi bi-instagram"></i></a></li>
+                                            <li><a href="#"><i className="bi bi-linkedin"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -74,7 +72,7 @@ export default async function page(props: any) {
                                             </tr>
                                             <tr>
                                                 <td>Phone Number:</td>
-                                                <td>+1 83498 584958</td>
+                                                <td>{person.data.phone_number}</td>
                                             </tr>
                                             <tr>
                                                 <td>Qualification:</td>

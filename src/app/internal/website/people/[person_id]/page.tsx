@@ -4,8 +4,6 @@ import React from 'react'
 export default async function page(props: any) {
     const person = await getPersonByUID(props.params.person_id);
 
-    console.log("THE RESULT:::", person)
-
     return (
         <>
             <div className="bg-primary text-white inner-banner-two light-bg text-center pt-200 md-pt-150 pb-85 lg-pb-50 position-relative">

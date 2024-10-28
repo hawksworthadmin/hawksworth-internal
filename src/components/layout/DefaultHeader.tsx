@@ -105,7 +105,7 @@ const EachNav = ({eachNav, onClick}:{eachNav:any; onClick: () => void;}) => {
             {
                 eachNav?.subNav && eachNav?.subNav.length > 0 ? <ul className={`dropdown-menu ${show ? "show": ""}`} >
                     {eachNav.subNav.map((eachSubNav:any, index:number) => {
-                        return <li key={`sub-nav-${index}`}>
+                        return <li key={`sub-nav-${index}`} onClick={() => onClick()}>
                             <Link href={eachSubNav.route} className="dropdown-item">
                                 <span>{eachSubNav.label}</span>
                             </Link>

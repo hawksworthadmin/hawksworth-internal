@@ -6,7 +6,7 @@ export async function getEvents(): Promise<EventsDocument<string>[]>{
     return await prismicClient.getAllByType('events', {
         fetchOptions: {
             cache: 'no-store',
-            next: { tags: ['prismic', 'latest_event'] },
+            next: { tags: ['prismic', 'lasted_event'] },
         },
         // fetchLinks: ['author.fullname'],
         limit: 20,
@@ -27,3 +27,8 @@ export async function getEvents(): Promise<EventsDocument<string>[]>{
     })
 
 }
+
+export async function getEventDetails(uid: string):Promise<EventsDocument<string>>{
+    return await prismicClient.getByUID('events', uid);
+}
+

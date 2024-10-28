@@ -90,8 +90,8 @@ export default function HomeResources() {
                     </div>
 
                     <div className='row gx-xl-5'>
-                        <EachResource />
-                        <EachResource />
+                        {/* <EachResource />
+                        <EachResource /> */}
                     </div>
 
 

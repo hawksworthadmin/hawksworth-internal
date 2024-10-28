@@ -1,3 +1,4 @@
+'use client'
 import localFont from "next/font/local";
 import '../../public/template/css/bootstrap.min.css'
 import '../../public/template/css/style.min.css'
@@ -17,20 +18,14 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata = {
-  title: "Hawksworth",
-  description: "Hawksworth Internal",
-};
+// export const metadata = {
+//   title: "Hawksworth",
+//   description: "Hawksworth Internal",
+// };
 
 export default function RootLayout({ children }: any) {
   return (
     <html lang="en" className="select-none">
-      <head>
-       
-
-        {/* <Script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossOrigin="anonymous" />
-        <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossOrigin="anonymous" /> */}
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         style={{ overflowX: 'hidden' }}
@@ -39,15 +34,15 @@ export default function RootLayout({ children }: any) {
           {children}
         </DefaultProviders>
         <div>
-          {/* <Script
+          <Script
             src="/template/vendor/jquery.min.js"
-          /> */}
+          />
           {/* <Script
             src="/template/vendor/bootstrap/js/bootstrap.bundle.min.js"
           /> */}
 
           
-          {/* <Script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossOrigin="anonymous" /> */}
+          <Script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossOrigin="anonymous" />
           {/* <Script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

@@ -1,7 +1,7 @@
 'use client'
 import { useAppContext } from '@/context/app.context';
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 
 type EachNav = { label: string; route: string; subNav?: EachNav[] }
 
@@ -9,19 +9,21 @@ type EachNav = { label: string; route: string; subNav?: EachNav[] }
 
 export default function DefaultHeader() {
     const { offices } = useAppContext();
+    const [show, setShow] = useState(false);
+
     const navList: EachNav[] = [
-        // {
-        //     label: "Home",
-        //     route: '/'
-        // },
+        {
+            label: "Home",
+            route: '/internal/website'
+        },
         {
             label: "Resources",
             route: '/internal/website/resources'
         },
-        {
-            label: "Openings",
-            route: '/internal/website/openings'
-        },
+        // {
+        //     label: "Openings",
+        //     route: '/internal/website/openings'
+        // },
 
         {
             label: "Events",
@@ -58,35 +60,20 @@ export default function DefaultHeader() {
                                 </ul>
                             </div>
                             <nav className="navbar navbar-expand-lg p0 order-lg-2">
-                                <button className="navbar-toggler d-block d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <button className="navbar-toggler d-block d-lg-none " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded={show ? "true": "false"} aria-label="Toggle navigation" onClick={() => setShow(!show)}>
                                     <span></span>
                                 </button>
-                                <div className="collapse navbar-collapse" id="navbarNav">
+                                <div className={`collapse navbar-collapse ${show && 'show'}`} id="navbarNav">
                                     <ul className="navbar-nav align-items-lg-center">
                                         <li className="d-block d-lg-none"><div className="logo"><a href="index.html" className="d-block"><img src="/logo-light.svg" alt="logo" width={230} /></a></div></li>
-                                        <li className="nav-item dropdown">
-                                            <Link className="nav-link dropdown-toggle" href={`/internal/website`} role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                        {/* <li className="nav-item dropdown">
+                                            <Link className="nav-link" href={`/internal/website`} role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                                                 Home
                                             </Link>
-                                        </li>
+                                        </li> */}
                                         {
                                             navList.map((eachNav, index) => {
-                                                return <li className="nav-item dropdown" key={`nav--${index}`}>
-                                                    <Link className="nav-link dropdown-toggle" href={eachNav.subNav ? "" : eachNav.route} role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                                                        {eachNav.label}
-                                                    </Link>
-                                                    {
-                                                        eachNav?.subNav && eachNav?.subNav.length > 0 ? <ul className="dropdown-menu">
-                                                            {eachNav.subNav.map((eachSubNav, index) => {
-                                                                return <li key={`sub-nav-${index}`}>
-                                                                    <Link href={eachSubNav.route} className="dropdown-item">
-                                                                        <span>{eachSubNav.label}</span>
-                                                                    </Link>
-                                                                </li>
-                                                            })}
-                                                        </ul> : null
-                                                    }
-                                                </li>
+                                                return <EachNav key={`each-nav-${index}`} eachNav={eachNav} onClick={() => setShow(false)} />
                                             })
                                         }
 
@@ -99,4 +86,33 @@ export default function DefaultHeader() {
             </header>
         </>
     )
+}
+
+
+const EachNav = ({eachNav, onClick}:{eachNav:any; onClick: () => void;}) => {
+    const [show, setShow] = useState(false);
+    return <>
+        <li className={`nav-item ${eachNav.subNav && `dropdown`}`}>
+            <Link className={`nav-link ${eachNav.subNav && `dropdown-toggle`}`} href={eachNav.subNav ? "" : eachNav.route} role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded={show ? "true": "false"} onClick={() => {
+                    if(eachNav.subNav) {
+                        setShow(!show)
+                    }else {
+                        onClick()
+                    }
+                }}>
+                {eachNav.label}
+            </Link>
+            {
+                eachNav?.subNav && eachNav?.subNav.length > 0 ? <ul className={`dropdown-menu ${show ? "show": ""}`} >
+                    {eachNav.subNav.map((eachSubNav, index) => {
+                        return <li key={`sub-nav-${index}`}>
+                            <Link href={eachSubNav.route} className="dropdown-item">
+                                <span>{eachSubNav.label}</span>
+                            </Link>
+                        </li>
+                    })}
+                </ul> : null
+            }
+        </li>
+    </>
 }

@@ -17,7 +17,9 @@ export default async function page({ }: Props) {
                 {
                     label: "Resources"
                 }
-            ]} />
+            ]}
+                imageURL='https://www.governmentsupplyservices.com/img/office-supplies.jpg'
+             />
             <section className='blog-section-two position-relative mt-150 lg-mt-80 mb-150 lg-mb-80'>
                 <div className="container">
                     <div className="row">

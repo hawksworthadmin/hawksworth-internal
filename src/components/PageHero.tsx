@@ -18,7 +18,7 @@ export default function PageHero({ heading, subHeading, imageURL, breadcrumbs }:
                 <div className="container position-relative">
                     <div className="row align-items-center">
                         <div className="col-lg-7">
-                            <h1 className="hero-heading d-inline-block position-relative text-white">
+                            <h1 className="hero-heading d-inline-block position-relative text-white bg-none" style={{ background: 'none' }}>
                                 {heading}
                             </h1>
                             {/* <img src="/template/images/shape/shape_31.svg" alt="" /> */}

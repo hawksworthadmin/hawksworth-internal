@@ -13,7 +13,7 @@ export default function LoginPage() {
 
                 if (result.user.email?.includes('hawksworth.org')) {
                     //@ts-ignore
-                    Cookies.set('hw-token', result.user['accessToken'], { expires: 7 });
+                    Cookies.set('hw-token', result.user['accessToken'], { expires: 14 });
                     window.location.reload();
                 } else {
                     auth.signOut()

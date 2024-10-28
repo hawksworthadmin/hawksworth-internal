@@ -262,6 +262,17 @@ interface EventsDocumentData {
   location: prismic.KeyTextField;
 
   /**
+   * Date and Time field in *Events*
+   *
+   * - **Field Type**: Timestamp
+   * - **Placeholder**: *None*
+   * - **API ID Path**: events.date_and_time
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#timestamp
+   */
+  date_and_time: prismic.TimestampField;
+
+  /**
    * Slice Zone field in *Events*
    *
    * - **Field Type**: Slice Zone

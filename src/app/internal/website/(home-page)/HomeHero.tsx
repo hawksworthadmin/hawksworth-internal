@@ -22,12 +22,12 @@ export default function HomeHero() {
 
 
     const subHeadings = [
-        `Go for it! You already ave what it takes.`,
+        `Go for it! You already have what it takes.`,
         `Remember that help is available. To those who ask, Ask away!`,
         `Breathe in, breathe out. It's another day. It too shall pass.`,
         `Share some love today. Spread that your beautiful smile.`,
         `Celebrate peace! Remember to to drink water too.`,
-        `Did you remember to give your system some`
+        `Did you remember to give your system some rest?`
     ]
 
     const allCTAs: { label: string; route: string }[] = [
@@ -81,9 +81,9 @@ export default function HomeHero() {
                                     <p className="text-xl text-white pt-35 pb-25 wow fadeInUp" data-wow-delay="0.1s" style={{ visibility: "visible", animationDelay: "0.1s", animationName: "fadeInUp" }}>
                                         {subHeadings[randomSubHeading()]}
                                     </p>
-                                    <Link href={allCTAs[randomCTA()].route} className="btn-two icon-link wow fadeInUp" data-wow-delay="0.2s" style={{ visibility: "visible", animationDelay: "0.2s", animationName: "fadeInUp" }}>
+                                    {/* <Link href={allCTAs[randomCTA()].route} className="btn-two icon-link wow fadeInUp" data-wow-delay="0.2s" style={{ visibility: "visible", animationDelay: "0.2s", animationName: "fadeInUp" }}>
                                         <span>{allCTAs[randomCTA()].label}</span>
-                                    </Link>
+                                    </Link> */}
                                 </>
                             }
                         </div>

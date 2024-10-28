@@ -14,10 +14,10 @@ export default function HomeArticles({ articles }: Props) {
                 <div className="container">
                     <div className='position-relative'>
                         <div className="title-one mb-20 lg-mb-10">
-                            <h2>Latest Articles.</h2>
+                            <h2>News Letter.</h2>
                         </div>
 
-                        <p className="text-lg mb-40 lg-mb-10">Get the latest update, trips &amp; tricks from our expert.</p>
+                        <p className="text-lg mb-40 lg-mb-10">Get the latest news at the firm.</p>
 
 
                         <div className='row gx-xxl-5'>
@@ -34,7 +34,7 @@ export default function HomeArticles({ articles }: Props) {
 
                         <div className="section-btn sm-mt-40">
                             <Link href="/internal/website/articles" className="btn-five icon-link">
-                                <span className="text">See all blogs</span>
+                                <span className="text">See all</span>
                                 <div className="icon tran3s rounded-circle d-flex align-items-center justify-content-center"><i className="bi bi-arrow-up-right"></i></div>
                             </Link>
                         </div>

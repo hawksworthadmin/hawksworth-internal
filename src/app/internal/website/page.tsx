@@ -16,10 +16,10 @@ export default async function page() {
         <>
             <HomeHero />
             <HomeAbout />
-            <HomeNumber />
-            <HomeResources />
-            <HomeProject />
-            <HomeFAQ />
+            {/* <HomeNumber /> */}
+            {/* <HomeResources /> */}
+            {/* <HomeProject /> */}
+            {/* <HomeFAQ /> */}
             <HomeArticles articles={articles} />
             <HRCTA />
         </>

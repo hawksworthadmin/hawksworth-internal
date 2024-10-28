@@ -1,3 +1,4 @@
+import { contactDetails } from '@/lib/constants'
 import React from 'react'
 
 export default function HRCTA() {
@@ -13,7 +14,7 @@ export default function HRCTA() {
                                         <h2 className="text-dark">Need to speak to human resources?</h2>
                                     </div>
                                     <div className="position-relative d-inline-block mt-15">
-                                        <a href="contact.html" className="btn-four">Contact HR</a>
+                                        <a href={`mailto:${contactDetails.hrEmail}`} className="btn-four">Contact HR</a>
                                         <img src="/template/images/shape/shape_51.svg" alt="" className="lazy-img shapes shape_02 wow fadeInRight" style={{ visibility: "visible", animationName: "fadeInRight" }} />
                                     </div>
                                 </div>

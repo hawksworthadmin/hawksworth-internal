@@ -36,10 +36,10 @@ export default function DefaultHeader() {
                 route: `/internal/website/people?office=${eachOffice.uid}`,
             }))
         },
-        {
-            label: "About",
-            route: '/internal/website/about'
-        },
+        // {
+        //     label: "About",
+        //     route: '/internal/website/about'
+        // },
     ]
     return (
         <>
@@ -54,7 +54,7 @@ export default function DefaultHeader() {
                             </div>
                             <div className="right-widget ms-auto ms-lg-0 me-3 me-lg-0 order-lg-3">
                                 <ul className="d-flex align-items-center style-none">
-                                    <li className="d-none d-md-block"><a href="contact.html" className="btn-one tran3s">Get in Touch</a></li>
+                                    <li className="d-none d-md-block"><Link href="/internal/website/about" className="btn-one tran3s">About Us</Link></li>
                                 </ul>
                             </div>
                             <nav className="navbar navbar-expand-lg p0 order-lg-2">

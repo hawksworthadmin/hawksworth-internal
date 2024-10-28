@@ -2,7 +2,7 @@ import { ResourcesDocument } from "../../prismicio-types";
 import { prismicClient } from "./index.prismic";
 import * as prismic from "@prismicio/client";
 
-export const getLatestResources = async () => {
+export const getLatestResources = async (limit?: number) => {
     return await prismicClient.getByType("resources", {
         filters: [
             // prismic.filter.at('my.roles.office', theOffice.id),
@@ -12,7 +12,7 @@ export const getLatestResources = async () => {
             field: "document.first_publication_date",
             direction: "desc",
         },
-        pageSize: 20,
+        pageSize: limit || 20,
     });
 };
 

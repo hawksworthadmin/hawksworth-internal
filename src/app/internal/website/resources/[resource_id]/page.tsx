@@ -1,11 +1,14 @@
 import PageHero from '@/components/PageHero'
-import { getResourceDetails } from '@/prismic/resources.prismic'
+import { getLatestResources, getResourceDetails } from '@/prismic/resources.prismic'
 import moment from 'moment'
 import React from 'react'
 import { PrismicRichText } from '@prismicio/react'
+import ArticleRight from '../../articles/[article_id]/ArticleRight'
 
 export default async function page(props: any) {
   const details = await getResourceDetails(props.params.resource_id)
+
+  const more = await getLatestResources(5)
 
   return (
     <>
@@ -31,7 +34,16 @@ export default async function page(props: any) {
                 </div>
               </article>
             </div>
-            <div className='col-lg-4 col-md-8'></div>
+            <div className='col-lg-4 col-md-8'>
+              <ArticleRight others={
+                more.results.filter(x => x.uid != props.params.resource_id).map(resource => ({
+                  createdAt: resource.first_publication_date,
+                  imageURL: resource.data.image.url || '',
+                  route: `/internal/website/${resource.uid}`,
+                  title: resource.data.name || ''
+                }))
+              } />
+            </div>
           </div>
         </div>
       </section>

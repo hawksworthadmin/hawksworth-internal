@@ -54,6 +54,34 @@
           "placeholder": "Ex +234 533 3534"
         }
       },
+      "location": {
+        "type": "Text",
+        "config": {
+          "label": "Location",
+          "placeholder": ""
+        }
+      },
+      "gender": {
+        "type": "Text",
+        "config": {
+          "label": "Gender",
+          "placeholder": ""
+        }
+      },
+      "email": {
+        "type": "Text",
+        "config": {
+          "label": "Email",
+          "placeholder": ""
+        }
+      },
+      "linkedin_url": {
+        "type": "Text",
+        "config": {
+          "label": "LinkedIn URL",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

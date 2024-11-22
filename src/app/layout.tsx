@@ -1,4 +1,3 @@
-'use client'
 import localFont from "next/font/local";
 import '../../public/template/css/bootstrap.min.css'
 import '../../public/template/css/style.min.css'
@@ -18,10 +17,10 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-// export const metadata = {
-//   title: "Hawksworth",
-//   description: "Hawksworth Internal",
-// };
+export const metadata = {
+  title: "Hawksworth",
+  description: "Hawksworth Internal",
+};
 
 export default function RootLayout({ children }: any) {
   return (

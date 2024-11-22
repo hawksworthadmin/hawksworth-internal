@@ -81,9 +81,9 @@ export default function HomeHero() {
                                     <p className="text-xl text-white pt-35 pb-25 wow fadeInUp" data-wow-delay="0.1s" style={{ visibility: "visible", animationDelay: "0.1s", animationName: "fadeInUp" }}>
                                         {subHeadings[randomSubHeading()]}
                                     </p>
-                                    {/* <Link href={allCTAs[randomCTA()].route} className="btn-two icon-link wow fadeInUp" data-wow-delay="0.2s" style={{ visibility: "visible", animationDelay: "0.2s", animationName: "fadeInUp" }}>
+                                     <Link href={allCTAs[randomCTA()].route} className="btn-two icon-link wow fadeInUp" data-wow-delay="0.2s" style={{ visibility: "visible", animationDelay: "0.2s", animationName: "fadeInUp" }}>
                                         <span>{allCTAs[randomCTA()].label}</span>
-                                    </Link> */}
+                                    </Link>
                                 </>
                             }
                         </div>
@@ -92,7 +92,7 @@ export default function HomeHero() {
                 <Link href={'/internal/website/about'} className='more-btn rounded-circle d-flex align-items-center justify-content-center tran3s wow fadeInLeft' style={{ visibility: "visible", animationName: "fadeInLeft" }}>
                     <HiArrowUpRight />
                 </Link>
-            </section >
+            </section>
         </>
     )
 }

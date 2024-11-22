@@ -1,5 +1,6 @@
 import { getPersonByUID } from '@/prismic/people.prismic'
 import React from 'react'
+import {PrismicRichText} from "@prismicio/react";
 
 export default async function page(props: any) {
     const person = await getPersonByUID(props.params.person_id);
@@ -10,15 +11,17 @@ export default async function page(props: any) {
                 <div className="container position-relative">
                     <div className="row">
                         <div className="col-xxl-7 col-xl-6 m-auto">
-                            <ul className="text-white style-none d-inline-flex justify-content-center pager">
-                                <li><a href="index-2.html">Home</a></li>
-                                <li>/</li>
-                                <li><a href="#">Pages</a></li>
-                                <li>/</li>
-                                <li>Team</li>
-                            </ul>
-                            <h1 className="hero-heading text-white">Single Team Details</h1>
-                            <p className="text-lg">Find the team members details here with all the information</p>
+                            {/*<ul className="text-white style-none d-inline-flex justify-content-center pager">*/}
+                            {/*    <li><a href="index-2.html">Home</a></li>*/}
+                            {/*    <li>/</li>*/}
+                            {/*    <li><a href="#">Pages</a></li>*/}
+                            {/*    <li>/</li>*/}
+                            {/*    <li>Team</li>*/}
+                            {/*</ul>*/}
+                            <h1 className="hero-heading text-white">
+                                {person.data.full_name}
+                            </h1>
+                            {/*<p className="text-lg">Find the team members details here with all the information</p>*/}
                         </div>
                     </div>
                 </div>
@@ -41,13 +44,23 @@ export default async function page(props: any) {
                                     <h2 className="name fw-bold">
                                         {person.data.full_name}
                                     </h2>
-                                    <div className="post">Founder &amp; CEO</div>
+                                    <div className="post">
+                                        {/*@ts-ignore*/}
+                                        {person.data.role?.slug?.replaceAll('-', ' ')}
+                                    </div>
                                     <h6 className="fw-bold">About {person.data.full_name?.split(' ')[0]}.</h6>
                                     {/* @ts-ignore */}
-                                    <p>The bio of the person goes here</p>
+                                    <div>
+                                        <PrismicRichText field={person.data.biography} />
+                                    </div>
                                     <div className="social-share pt-35">
                                         <ul className="style-none d-flex align-items-center">
-                                            <li><a href="#"><i className="bi bi-linkedin"></i></a></li>
+                                            {
+                                                person.data.linkedin_url &&
+                                                <li><a href={person.data.linkedin_url}><i
+                                                    className="bi bi-linkedin"></i></a>
+                                                </li>
+                                            }
                                         </ul>
                                     </div>
                                 </div>
@@ -58,27 +71,28 @@ export default async function page(props: any) {
                                     <table className="w-100 mt-25 lg-mt-20">
                                         <tbody><tr>
                                             <td>Location:</td>
-                                            <td>Spain, Barcelona</td>
+                                            <td>{person.data.location}</td>
                                         </tr>
                                             <tr>
                                                 <td>Position:</td>
-                                                <td>Founder &amp; CEO</td>
+                                                {/*@ts-ignore*/}
+                                                <td>{person.data.role?.slug?.replaceAll('-', ' ')}</td>
                                             </tr>
                                             <tr>
                                                 <td>Email:</td>
-                                                <td>mathfir@support.com</td>
+                                                <td>{person.data.email || "N/A"}</td>
                                             </tr>
                                             <tr>
                                                 <td>Phone Number:</td>
                                                 <td>{person.data.phone_number}</td>
                                             </tr>
-                                            <tr>
-                                                <td>Qualification:</td>
-                                                <td>Master Degree</td>
-                                            </tr>
+                                            {/*<tr>*/}
+                                            {/*    <td>Qualification:</td>*/}
+                                            {/*    <td>Master Degree</td>*/}
+                                            {/*</tr>*/}
                                             <tr>
                                                 <td>Gender:</td>
-                                                <td>Male</td>
+                                                <td>{person.data.gender || 'N/A'}</td>
                                             </tr>
                                         </tbody>
                                     </table>

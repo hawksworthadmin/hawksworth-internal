@@ -465,6 +465,50 @@ interface PeopleDocumentData {
   phone_number: prismic.KeyTextField;
 
   /**
+   * Location field in *People*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: people.location
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  location: prismic.KeyTextField;
+
+  /**
+   * Gender field in *People*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: people.gender
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  gender: prismic.KeyTextField;
+
+  /**
+   * Email field in *People*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: people.email
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  email: prismic.KeyTextField;
+
+  /**
+   * LinkedIn URL field in *People*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: people.linkedin_url
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  linkedin_url: prismic.KeyTextField;
+
+  /**
    * Slice Zone field in *People*
    *
    * - **Field Type**: Slice Zone

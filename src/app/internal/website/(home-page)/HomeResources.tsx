@@ -4,9 +4,9 @@ import { BsArrowRight } from 'react-icons/bs'
 import {ResourcesDocument} from "../../../../../prismicio-types";
 import {Query} from "@prismicio/types";
 import dayjs from "dayjs";
+import Link from 'next/link'
 
 export default function HomeResources({ resources }: { resources: Query<ResourcesDocument<string>> }) {
-
     const results = resources.results;
 
     return <>
@@ -47,9 +47,10 @@ export default function HomeResources({ resources }: { resources: Query<Resource
                                         </div>
                                         <div className="col-lg-7">
                                             <h3 className="block-title d-inline-block position-relative">
-                                                <a href="project-details-v1.html">
+                                                <Link href={`/internal/website/resources/${results[0]?.uid}`}>
                                                     {results[0].data.name}
-                                                </a></h3>
+                                                </Link>
+                                            </h3>
                                         </div>
                                     </div>
                                 </div>
@@ -74,9 +75,9 @@ export default function HomeResources({ resources }: { resources: Query<Resource
                                             {dayjs(results[1].first_publication_date).format('DD MMMM YYYY')}
                                         </div>
                                         <h3 className="block-title d-inline-block position-relative mt-5 mb-40 lg-mb-30">
-                                            <a href="project-details-v1.html">
+                                            <Link href={`/internal/website/resources/${results[1]?.uid}`}>
                                                 {results[1].data.name}
-                                            </a>
+                                            </Link>
                                         </h3>
                                         <div
                                             className="d-flex align-items-center justify-content-between">
@@ -85,9 +86,10 @@ export default function HomeResources({ resources }: { resources: Query<Resource
                                                 {/*@ts-ignore*/}
                                                 {results[1].data.category?.slug?.replaceAll('-', ' ')}
                                             </div>
-                                            <a href="project-details-v1.html"
+                                            <Link href={`/internal/website/resources/${results[1]?.uid}`}
                                                className="round-btn rounded-circle d-flex align-items-center justify-content-center tran3s"><i
-                                                className="bi bi-arrow-up-right"></i></a>
+                                                className="bi bi-arrow-up-right"></i>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
@@ -105,18 +107,20 @@ export default function HomeResources({ resources }: { resources: Query<Resource
                                 }}>
                                     <div className="date">3 Aug 2023</div>
                                     <h3 className="block-title d-inline-block position-relative mt-20 mb-80 lg-mb-50">
-                                        <a href="project-details-v1.html">
+                                        <Link href={`/internal/website/resources/${results[2]?.uid}`}>
                                             {results[2].data.name}
-                                        </a></h3>
+                                        </Link>
+                                    </h3>
                                     <div
                                         className="d-flex align-items-center justify-content-between">
                                         <div className="tag text-uppercase fw-500">
                                             {/*@ts-ignore*/}
                                             {results[2].data.category?.slug?.replaceAll('-', ' ')}
                                         </div>
-                                        <a href="project-details-v1.html"
+                                        <Link href={`/internal/website/resources/${results[2]?.uid}`}
                                            className="round-btn rounded-circle d-flex align-items-center justify-content-center tran3s"><i
-                                            className="bi bi-arrow-up-right"></i></a>
+                                            className="bi bi-arrow-up-right"></i>
+                                        </Link>
                                     </div>
                                 </div>
                             }
@@ -132,18 +136,20 @@ export default function HomeResources({ resources }: { resources: Query<Resource
                                     backgroundSize: "cover"
                                 }}>
                                     <h3 className="block-title d-inline-block position-relative mt-20 mb-250 lg-mb-150 sm-mb-100">
-                                        <a href="project-details-v1.html">
+                                        <Link href={`/internal/website/resources/${results[3]?.uid}`}>
                                             {results[3].data.name}
-                                        </a></h3>
+                                        </Link>
+                                    </h3>
                                     <div
                                         className="d-flex align-items-center justify-content-between">
                                         <div className="tag text-uppercase fw-500">
                                             {/*@ts-ignore*/}
                                             {results[3].data.category?.slug?.replaceAll('-', ' ')}
                                         </div>
-                                        <a href="project-details-v1.html"
+                                        <Link href={`/internal/website/resources/${results[3]?.uid}`}
                                            className="round-btn rounded-circle d-flex align-items-center justify-content-center tran3s"><i
-                                            className="bi bi-arrow-up-right"></i></a>
+                                            className="bi bi-arrow-up-right"></i>
+                                        </Link>
                                     </div>
                                 </div>
                             }
@@ -151,12 +157,12 @@ export default function HomeResources({ resources }: { resources: Query<Resource
                     </div>
 
                     <div className="section-btn sm-mt-40">
-                        <a href="project-v1.html" className="btn-five icon-link">
+                        <Link href={`/internal/website/resources`} className="btn-five icon-link">
                             <span className="text">See all</span>
                             <div
                                 className="icon tran3s rounded-circle d-flex align-items-center justify-content-center">
                                 <i className="bi bi-arrow-up-right"></i></div>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

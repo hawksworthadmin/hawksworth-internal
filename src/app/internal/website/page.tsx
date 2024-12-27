@@ -9,6 +9,7 @@ import { getArticles } from '@/prismic/articles.prismic'
 import HomeNumber from './(home-page)/HomeNumber'
 import HomeProject from './(home-page)/HomeProject'
 import {getLatestResources} from "@/prismic/resources.prismic";
+import HomeClient from "@/app/internal/website/(home-page)/HomeClinet";
 
 export default async function page() {
     const articles = await getArticles();
@@ -18,10 +19,11 @@ export default async function page() {
         <>
             <HomeHero />
             <HomeAbout />
-             <HomeNumber />
+            <HomeClient />
+             {/*<HomeNumber />*/}
              <HomeResources resources={resources} />
-             <HomeProject />
-             <HomeFAQ />
+             {/*<HomeProject />*/}
+             {/*<HomeFAQ />*/}
              <HomeArticles articles={articles} />
             <HRCTA />
         </>

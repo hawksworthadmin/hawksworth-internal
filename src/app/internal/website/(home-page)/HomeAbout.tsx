@@ -29,7 +29,7 @@ export default function HomeAbout() {
                                     <li>Fostering creativity to solve problems</li>
                                     <li>{`Inspire and empower businesses`}</li>
                                     <li>{`Commitment to ethical practices guides`}</li>
-                                    <li>{`Deliver the highest standard in every aspect`}.</li>
+                                    <li>{`Deliver the highest standard`}.</li>
                                 </ul>
                             </div>
                         </div>
